@@ -6,7 +6,7 @@ function runDots() {
 
     # Keep-alive: update existing `sudo` time stamp until the script has finished
     while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
+    cd /tmp 
     # Run sections based on command line arguments
     for ARG in "$@"
     do
@@ -16,7 +16,7 @@ function runDots() {
             echo "Syncing the dev-setup repo to your local machine."
             echo "------------------------------"
             echo ""
-            cd ~ && curl -#L https://github.com/donnemartin/dev-setup/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,LICENSE}
+            curl -#L https://github.com/ngetahun/dev-setup/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,LICENSE}
         fi
         if [ $ARG == "osprep" ] || [ $ARG == "all" ]; then
             # Run the osxprep.sh Script
