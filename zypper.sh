@@ -34,52 +34,52 @@ grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra
 git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
-zypper install aircrack-ng
-zypper install bfg
-zypper install binwalk
-zypper install cifer
-zypper install dex2jar
-zypper install dns2tcp
-zypper install fcrackzip
-zypper install foremost
-zypper install hashpump
-zypper install hydra
-zypper install john
-zypper install netpbm
-zypper install tcpreplay
-zypper install sqlmap
-zypper install ucspi-tcp
-zypper install homezypper/x11/xpdf
+sudo zypper install aircrack-ng
+sudo zypper install bfg
+sudo zypper install binwalk
+sudo zypper install cifer
+sudo zypper install dex2jar
+sudo zypper install dns2tcp
+sudo zypper install fcrackzip
+sudo zypper install foremost
+sudo zypper install hashpump
+sudo zypper install hydra
+sudo zypper install john
+sudo zypper install netpbm
+sudo zypper install tcpreplay
+sudo zypper install sqlmap
+sudo zypper install ucspi-tcp
+sudo zypper install homezypper/x11/xpdf
 
-zypper install pngcheck
-zypper install xz
-zypper install binutils
-zypper install nmap
-zypper install socat
-zypper install tcpflow
-zypper install knock
-zypper install tcptraceroute
+sudo zypper install pngcheck
+sudo zypper install xz
+sudo zypper install binutils
+sudo zypper install nmap
+sudo zypper install socat
+sudo zypper install tcpflow
+sudo zypper install knock
+sudo zypper install tcptraceroute
 
 # Install other useful binaries.
-zypper install ack
-zypper install hub
+sudo zypper install ack
+sudo zypper install hub
 
-zypper install ImageMagick
-zypper install pv
-zypper install lynx
-zypper install lua51
-zypper install p7zip
-zypper install pigz
-zypper install krename
-zypper install rhino
-zypper install tree
+sudo zypper install ImageMagick
+sudo zypper install pv
+sudo zypper install lynx
+sudo zypper install lua51
+sudo zypper install p7zip
+sudo zypper install pigz
+sudo zypper install krename
+sudo zypper install rhino
+sudo zypper install tree
 
 # Lxml and Libxslt
-zypper install libxml2
-zypper install libxslt
+sudo zypper install libxml2
+sudo zypper install libxslt
 
 # Install Heroku
-curl https://cli-assets.heroku.com/install.sh | sh
+sudo curl https://cli-assets.heroku.com/install.sh | sh
 heroku update
 
 # Install snap
@@ -92,17 +92,20 @@ sudo systemctl enable snapd
 sudo systemctl start snapd
 
 # Development tool casks
-zypper cask install virtualbox
-zypper cask install vagrant
+sudo zypper install virtualbox
+sudo zypper install vagrant
 
 # Install Alacritty emulator
 sudo snap install alacritty --classic
 sudo snap install code --classic
 
-# Misc casks
-zypper install MozillaThunderbird
-zypper install brave-browser
+# Brave browser
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo zypper addrepo https://brave-browser-rpm-release.s3.brave.com/x86_64/ brave-browser
+sudo zypper install brave-browser
 
+# Misc casks
+sudo zypper install MozillaThunderbird
 
 # Install Docker, which requires virtualbox
 sudo zypper install docker docker-compose
