@@ -16,8 +16,6 @@ sudo systemctl enable postgresql
 sudo systemctl start postgresql
 
 # Install data stores
-brew install mysql
-# TODO: do this in tmp
 
 cd /tmp
 wget https://dev.mysql.com/get/mysql80-community-release-sl15-3.noarch.rpm
@@ -31,8 +29,8 @@ sudo zypper addrepo --gpgcheck "https://repo.mongodb.org/zypper/suse/15/mongodb-
 sudo zypper -n install mongodb-org
 sudo zypper install mongodb-org-4.2.6 mongodb-org-server-4.2.6 mongodb-org-shell-4.2.6 mongodb-org-mongos-4.2.6 mongodb-org-tools-4.2.6
 
-zypper install redis
+sudo zypper install redis
 
-zypper addrepo https://download.opensuse.org/repositories/security:logging/openSUSE_Leap_15.1/security:logging.repo
-zypper refresh
-zypper install elasticsearch
+sudo zypper addrepo https://download.opensuse.org/repositories/security:logging/openSUSE_Leap_15.1/security:logging.repo
+sudo zypper refresh
+sudo zypper install elasticsearch

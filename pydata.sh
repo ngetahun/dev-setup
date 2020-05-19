@@ -10,7 +10,7 @@ echo "------------------------------"
 echo "Setting up pip."
 
 # Install pip
-easy_install pip
+sudo easy_install pip
 
 ###############################################################################
 # Virtual Enviroments                                                         #
@@ -22,8 +22,8 @@ echo "Setting up virtual environments."
 # Install virtual environments globally
 # It fails to install virtualenv if PIP_REQUIRE_VIRTUALENV was true
 export PIP_REQUIRE_VIRTUALENV=false
-pip install virtualenv
-pip install virtualenvwrapper
+sudo pip install virtualenv
+sudo pip install virtualenvwrapper
 
 echo "------------------------------"
 echo "Source virtualenvwrapper from ~/.extra"
@@ -34,7 +34,8 @@ echo "" >> $EXTRA_PATH
 echo "" >> $EXTRA_PATH
 echo "# Source virtualenvwrapper, added by pydata.sh" >> $EXTRA_PATH
 echo "export WORKON_HOME=~/.virtualenvs" >> $EXTRA_PATH
-echo "source /usr/local/bin/virtualenvwrapper.sh" >> $EXTRA_PATH
+VIRTUALENV_EXEC=$(whereis virtualenvwrapper | awk '{print $2}')
+echo "source $VIRTUALENV_EXEC" >> $EXTRA_PATH
 echo "" >> $BASH_PROFILE_PATH
 source $EXTRA_PATH
 
@@ -73,7 +74,7 @@ echo "------------------------------"
 echo "Setting up py3-data virtual environment."
 
 # Create a Python3 data environment
-mkvirtualenv --python=/usr/local/bin/python3 py3-data
+mkvirtualenv --python=$(whereis python3 | awk '{print $2}') py3-data
 workon py3-data
 
 # Install Python data modules
